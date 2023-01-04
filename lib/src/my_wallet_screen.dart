@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_ui/src/local_db.dart';
 
 class MyWalletScreen extends StatefulWidget {
   const MyWalletScreen({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                 child: ListView.builder(
                   controller: controller,
                   shrinkWrap: true,
-                  itemCount: 10,
+                  itemCount: LocalDb.cardList.length,
                   scrollDirection: Axis.vertical,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
