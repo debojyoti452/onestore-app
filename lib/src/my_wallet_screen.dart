@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_ui/src/local_db.dart';
 
+import 'add_card_screen.dart';
+
 class MyWalletScreen extends StatefulWidget {
   const MyWalletScreen({Key? key}) : super(key: key);
 
@@ -28,7 +30,11 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
       backgroundColor: const Color(0xff4350A7),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+            return const AddCardScreen();
+          }));
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -159,7 +165,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                           color: Colors.white.withOpacity(0.8),
                         ),
                       ),
-                      const SizedBox(width: 80),
+                      const SizedBox(width: 60),
                       Text(
                         'Valid Thru: 12/22',
                         style: TextStyle(
