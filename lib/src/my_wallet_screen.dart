@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:wallet_ui/src/local_db.dart';
 
@@ -83,10 +85,17 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                         height: 80,
                       );
                     }
-                    return Align(
-                      heightFactor: 0.9,
-                      alignment: Alignment.topCenter,
-                      child: _creditCardUI(),
+                    return Dismissible(
+                      key: UniqueKey(),
+                      onDismissed: (direction) {
+                        log('direction: $direction');
+                      },
+                      direction: DismissDirection.horizontal,
+                      child: Align(
+                        heightFactor: 0.9,
+                        alignment: Alignment.topCenter,
+                        child: _creditCardUI(),
+                      ),
                     );
                   },
                 ),
