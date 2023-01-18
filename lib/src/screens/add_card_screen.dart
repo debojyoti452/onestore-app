@@ -2,16 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wallet_ui/src/card_validator.dart';
 
-import 'card_number_formatter.dart';
-import 'card_year_month_formatter.dart';
+import '../utils/validator/card_number_formatter.dart';
+import '../utils/validator/card_validator.dart';
+import '../utils/validator/card_year_month_formatter.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({Key? key}) : super(key: key);
 
   @override
-  _AddCardScreenState createState() => _AddCardScreenState();
+  _AddCardScreenState createState() =>
+      _AddCardScreenState();
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
@@ -22,12 +23,14 @@ class _AddCardScreenState extends State<AddCardScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 20),
           margin: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
                     onPressed: () {
@@ -91,17 +94,20 @@ class _AddCardScreenState extends State<AddCardScreen> {
       ],
       textInputAction: TextInputAction.done,
       keyboardType: TextInputType.number,
-      validator: CardValidator.validateCardNumWithLuhnAlgorithm,
+      validator:
+          CardValidator.validateCardNumWithLuhnAlgorithm,
       onChanged: (value) {
         log('Card Number: $value');
         setState(() {
-          cardType = CardValidator.getCardType(value.trim());
+          cardType =
+              CardValidator.getCardType(value.trim());
         });
         log('cardType: $cardType');
       },
       decoration: InputDecoration(
         prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12),
+          padding:
+              const EdgeInsets.only(left: 12, right: 12),
           child: CardValidator.getCardIcon(cardType),
         ),
         border: const OutlineInputBorder(
