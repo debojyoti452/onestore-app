@@ -35,7 +35,13 @@ jobs:
 
       # Create g.dart file.
 #       - run: flutter pub run build_runner build --delete-conflicting-outputs
-        
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 8
+          format: 'YYYY-MM-DD-HH-mm-ss'
+          
       # Create APK
       - name: Assemble app release APK
         run: flutter build apk
@@ -43,6 +49,6 @@ jobs:
       - name: Upload App APK
         uses: actions/upload-artifact@v3
         with:
-          name: app-release-zip
+          name: app-release-${{ steps.time.outputs.time }}
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 1
