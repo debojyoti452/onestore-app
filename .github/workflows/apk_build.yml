@@ -1,6 +1,5 @@
 name: Manual Generate APK
 on:
-  push:
   workflow_dispatch:
     inputs:
       flavor:
