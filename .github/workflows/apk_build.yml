@@ -27,7 +27,7 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: 'latest'
-          cache: true
+          cache: false
           
       # Get flutter dependencies.
       - run: flutter clean
