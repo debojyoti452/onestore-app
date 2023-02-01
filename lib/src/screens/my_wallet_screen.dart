@@ -1,9 +1,10 @@
 import 'dart:developer';
 
+import 'package:encrypt_db/encrypt_db.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_ui/src/data/local_db.dart';
 
-import 'add_card_screen.dart';
+import 'add_card/add_card_screen.dart';
 
 class MyWalletScreen extends StatefulWidget {
   const MyWalletScreen({Key? key}) : super(key: key);
@@ -16,15 +17,21 @@ class MyWalletScreen extends StatefulWidget {
 class _MyWalletScreenState extends State<MyWalletScreen> {
   double topContainer = 0;
   ScrollController controller = ScrollController();
+  EncryptDb encryptDb = EncryptDb();
 
   @override
   void initState() {
     super.initState();
+    _addCard();
     controller.addListener(() {
       setState(() {
         topContainer = controller.offset / 119;
       });
     });
+  }
+
+  void _addCard() async {
+    log('encryptDb.getPlatformVersion() = ${await encryptDb.getPlatformVersion()}');
   }
 
   @override
