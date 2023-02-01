@@ -40,13 +40,9 @@ jobs:
       - name: Assemble app release APK
         run: flutter build apk
 #         run: bash flutter build apk --release --flavor ${{ github.event.inputs.flavor }} -t lib/flavors/versions/${{ github.event.inputs.flavor }}.dart
-      - name: UploadAPK
-        uses: softprops/action-gh-release@v1
+      - name: Upload App APK
+        uses: actions/upload-artifact@v3
         with:
-          name: app_release.apk
-          files: build/app/outputs/flutter-apk/app-release.apk
-#       - name: Upload app APK
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: app-release.apk
-#           path: build/app/outputs/flutter-apk/app-release.apk
+          name: app-release-zip
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 1
