@@ -43,7 +43,14 @@ jobs:
 #         run: bash flutter build apk --release --flavor ${{ github.event.inputs.flavor }} -t lib/flavors/versions/${{ github.event.inputs.flavor }}.dart
 
       - name: Upload app APK
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+          
+                
+      - name: Download app APK
+        uses: actions/download-artifact@v3
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
