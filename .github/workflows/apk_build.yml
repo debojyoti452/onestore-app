@@ -1,8 +1,8 @@
 name: Manual Generate APK
 on:
+  push:
   workflow_dispatch:
     inputs:
-
       flavor:
         description: 'Which Flavor build?'
         required: true
@@ -41,9 +41,13 @@ jobs:
       - name: Assemble app release APK
         run: flutter build apk
 #         run: bash flutter build apk --release --flavor ${{ github.event.inputs.flavor }} -t lib/flavors/versions/${{ github.event.inputs.flavor }}.dart
-
-      - name: Upload app APK
-        uses: actions/upload-artifact@v3
+      - name: UploadAPK
+        uses: softprops/action-gh-release@v1
         with:
-          name: app-release.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: app_release.apk
+          files: build/app/outputs/flutter-apk/app-release.apk
+#       - name: Upload app APK
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: app-release.apk
+#           path: build/app/outputs/flutter-apk/app-release.apk
