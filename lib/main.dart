@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallet_ui/src/screens/add_card/cubit/add_card_cubit.dart';
 import 'package:wallet_ui/src/screens/my_wallet_screen.dart';
+
+import 'src/screens/add_card/cubit/add_card_cubit.dart';
 
 Future<void> mainCommon() async {
   runApp(MultiBlocProvider(

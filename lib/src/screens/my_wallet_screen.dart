@@ -2,9 +2,8 @@ import 'dart:developer';
 
 import 'package:encrypt_db/encrypt_db.dart';
 import 'package:flutter/material.dart';
+import 'package:security_module/security_module.dart';
 import 'package:wallet_ui/src/data/local_db.dart';
-
-import 'add_card/add_card_screen.dart';
 
 class MyWalletScreen extends StatefulWidget {
   const MyWalletScreen({Key? key}) : super(key: key);
@@ -18,6 +17,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
   double topContainer = 0;
   ScrollController controller = ScrollController();
   EncryptDb encryptDb = EncryptDb();
+  SecurityModule securityModulePlugin = SecurityModule();
 
   @override
   void initState() {
@@ -28,6 +28,18 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
         topContainer = controller.offset / 119;
       });
     });
+  }
+
+  void checkBiometricSupport() async {
+    var isBiometricSupport =
+        await securityModulePlugin.hasBiometricSupport();
+
+    log('isBiometricSupport = $isBiometricSupport');
+    if (isBiometricSupport == true) {
+      var isAuth =
+          await securityModulePlugin.authenticate();
+      log('isAuth = $isAuth');
+    }
   }
 
   void _addCard() async {
@@ -42,10 +54,11 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
           FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (ctx) {
-            return const AddCardScreen();
-          }));
+          checkBiometricSupport();
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (ctx) {
+          //   return const AddCardScreen();
+          // }));
         },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

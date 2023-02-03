@@ -17,6 +17,8 @@ dependencies:
   cupertino_icons: ^1.0.5
   encrypt_db:
     git: https://github.com/debojyoti452/encrypt_local_storage.git
+  security_module:
+    path: ./security_module
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
   freezed: ^2.3.2
