@@ -1,4 +1,4 @@
-package com.swing.wallet_ui.wallet_ui
+package com.swing.onestore
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.swing.wallet_ui.wallet_ui">
+    package="com.swing.onestore">
    <application
-        android:label="wallet_ui"
+        android:label="OneStore"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

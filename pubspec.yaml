@@ -14,18 +14,28 @@ dependencies:
   flutter:
     sdk: flutter
 
+  bot_toast: ^4.0.3
   cupertino_icons: ^1.0.5
+  equatable: ^2.0.5
+  freezed_annotation: ^2.2.0
+  flutter_screenutil: ^5.6.1
+  flutter_bloc: ^8.1.1
+  google_fonts: ^4.0.3
+  json_annotation: ^4.8.0
+
   encrypt_db:
-    git: https://github.com/debojyoti452/encrypt_local_storage.git
+    git:
+      url: https://github.com/debojyoti452/encrypt_local_storage.git
+      ref: 275bdc0
+
   security_module:
     path: ./security_module
-  flutter_bloc: ^8.1.1
-  equatable: ^2.0.5
-  freezed: ^2.3.2
-  freezed_annotation: ^2.2.0
 dev_dependencies:
   build_runner: ^2.3.3
   analyzer: ^5.4.0
+  json_serializable: ^6.6.1
+  dart_code_metrics: ^5.5.1
+  freezed: ^2.3.2
   flutter_test:
     sdk: flutter
 

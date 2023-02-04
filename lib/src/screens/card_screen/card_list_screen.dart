@@ -1,0 +1,127 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wallet_ui/src/data/db/local_db.dart';
+import 'package:wallet_ui/src/utils/constants/app_constants.dart';
+
+import '../../utils/global/secure_state_wrapper.dart';
+import '../../utils/themes/color_constants.dart';
+import '../add_card/add_card_screen.dart';
+import 'components/credit_card_widget.dart';
+
+class CardListScreen extends StatefulWidget {
+  static const id = 'CARD_LIST_SCREEN';
+
+  const CardListScreen({Key? key}) : super(key: key);
+
+  @override
+  _CardListScreenState createState() =>
+      _CardListScreenState();
+}
+
+class _CardListScreenState
+    extends SecureStateWrapper<CardListScreen> {
+  double topContainer = 0;
+
+  @override
+  void onInit() {}
+
+  @override
+  Widget onBuild(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorConstants.GREY,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, AddCardScreen.id);
+        },
+        mini: true,
+        backgroundColor: ColorConstants.BLACK,
+        child: Icon(
+          Icons.add,
+          size: 30.w,
+          color: ColorConstants.WHITE,
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: ColorConstants.WHITE,
+        elevation: 0,
+        title: Text(
+          AppConstants.appName,
+          style: TextStyle(
+            fontSize: 22.sp,
+            fontWeight: FontWeight.bold,
+            color: ColorConstants.BLACK,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.only(bottom: 40.h),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          decoration: BoxDecoration(
+            color: ColorConstants.WHITE,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20.r),
+              bottomRight: Radius.circular(20.r),
+            ),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: LocalDb.cardList.length,
+                  scrollDirection: Axis.vertical,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    if (index ==
+                        LocalDb.cardList.length - 1) {
+                      return SizedBox(
+                        height: 30.h,
+                      );
+                    }
+                    return Dismissible(
+                      key: UniqueKey(),
+                      onDismissed: (direction) {
+                        log('direction: $direction');
+                      },
+                      direction:
+                          DismissDirection.horizontal,
+                      child: Align(
+                        heightFactor: 0.9,
+                        alignment: Alignment.topCenter,
+                        child:
+                            CreditCardWidget(index: index),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void onDestroy() {}
+
+  @override
+  void onDispose() {}
+
+  @override
+  void onPause() {}
+
+  @override
+  void onResume() {}
+
+  @override
+  void onStop() {}
+}

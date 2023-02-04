@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:wallet_ui/src/utils/themes/color_constants.dart';
 
 enum CardType {
   visa,
@@ -24,14 +25,17 @@ class CardValidator {
       return CardType.mastercard;
     } else if (cardNumber.startsWith(RegExp(r'[4]'))) {
       return CardType.visa;
-    } else if (cardNumber.startsWith(RegExp(r'((34)|(37))'))) {
+    } else if (cardNumber
+        .startsWith(RegExp(r'((34)|(37))'))) {
       return CardType.amex;
-    } else if (cardNumber.startsWith(RegExp(r'((6[45])|(6011))'))) {
+    } else if (cardNumber
+        .startsWith(RegExp(r'((6[45])|(6011))'))) {
       return CardType.discover;
     } else if (cardNumber.startsWith(RegExp(
         r'^(5018|5020|5038|5893|6304|6759|6761|6762|6763)[0-9]{8,15}$'))) {
       return CardType.maestro;
-    } else if (cardNumber.startsWith(RegExp(r'^60[0-9]{14}$'))) {
+    } else if (cardNumber
+        .startsWith(RegExp(r'^60[0-9]{14}$'))) {
       return CardType.rupay;
     } else {
       return CardType.unknown;
@@ -39,7 +43,8 @@ class CardValidator {
   }
 
   /// Validate Card Number using Luhn Algorithm
-  static String? validateCardNumWithLuhnAlgorithm(String? cardNumber) {
+  static String? validateCardNumWithLuhnAlgorithm(
+      String? cardNumber) {
     if (cardNumber == null || cardNumber.isEmpty) {
       return 'Card Number is required';
     }
@@ -85,41 +90,48 @@ class CardValidator {
           'assets/card/visa.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       case CardType.mastercard:
         return Image.asset(
           'assets/card/mastercard.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       case CardType.amex:
         return Image.asset(
           'assets/card/amex.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       case CardType.discover:
         return Image.asset(
           'assets/card/discover.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       case CardType.maestro:
         return Image.asset(
           'assets/card/maestro.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       case CardType.rupay:
         return Image.asset(
           'assets/card/rupay.png',
           width: 30,
           height: 30,
+          color: ColorConstants.BLACK,
         );
       default:
         return const Icon(
           Icons.credit_card,
           size: 30,
+          color: ColorConstants.BLACK,
         );
     }
   }

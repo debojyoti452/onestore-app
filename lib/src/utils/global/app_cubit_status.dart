@@ -9,7 +9,7 @@ class AppCubitSuccess extends AppCubitStatus {}
 class AppCubitError extends AppCubitStatus {
   final String message;
 
-  AppCubitError(this.message);
+  AppCubitError({required this.message});
 }
 
 class AppCubitNoInternet extends AppCubitStatus {}

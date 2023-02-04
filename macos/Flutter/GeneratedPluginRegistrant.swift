@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import encrypt_db
+import path_provider_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  EncryptDbPlugin.register(with: registry.registrar(forPlugin: "EncryptDbPlugin"))
+  PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
 }
