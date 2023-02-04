@@ -57,6 +57,10 @@ protect your card information.
 - Card Themes
 - Card Sharing
 
+## Issues
+
+- If you find any issues, please report them to [Issues Tracker](https://github.com/debojyoti452/onestore-app/issues)
+
 ## Contributions
 
 - Contributions are welcome
