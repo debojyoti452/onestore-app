@@ -2,9 +2,11 @@ package com.example.security_module.utils
 
 import android.app.Activity
 import android.content.Context
+import android.view.WindowManager
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.FragmentActivity
 import com.example.security_module.constants.AppConstants
+import com.example.security_module.core.SecureWindow
 import com.example.security_module.core.SecurityAuthCallback
 import com.example.security_module.core.SecurityAuthHandler
 import com.example.security_module.utils.Extensions.hasBiometricSupport
@@ -60,6 +62,22 @@ class MethodHandlerImpl constructor(
                 })
                 securityAuthHandler?.initPromptInfo()
                 securityAuthHandler?.authenticate()
+            }
+            AppConstants.SECURE_APP -> {
+                val flag = call.argument<Int>(AppConstants.SECURE_APP)
+                if (flag != null) {
+                    if (SecureWindow.secureApp(flag)) {
+                        activity.window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                        activity.window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+                        activity.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+                        methodResult.success(true)
+                    } else {
+                        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                        methodResult.success(false)
+                    }
+                } else {
+                    methodResult.error("400", "Bad Request", null)
+                }
             }
             else -> {
                 methodResult.notImplemented()

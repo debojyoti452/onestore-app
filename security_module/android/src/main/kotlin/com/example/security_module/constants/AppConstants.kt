@@ -5,4 +5,5 @@ object AppConstants {
 
     const val HAS_BIOMETRIC_SUPPORT = "HAS_BIOMETRIC_SUPPORT"
     const val AUTHENTICATE = "AUTHENTICATE"
+    const val SECURE_APP = "SECURE_APP"
 }

@@ -10,4 +10,11 @@ class SecurityModule {
     return await SecurityModulePlatform.instance
         .authenticate();
   }
+
+  static Future<dynamic> secureApp({
+    required int flags,
+  }) async {
+    return await SecurityModulePlatform.instance
+        .secureApp(flags: flags);
+  }
 }

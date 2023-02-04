@@ -1,8 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wallet_ui/src/data/db/local_db.dart';
+import 'package:wallet_ui/src/screens/card_screen/components/empty_view.dart';
+import 'package:wallet_ui/src/screens/card_screen/cubit/card_list_cubit.dart';
 import 'package:wallet_ui/src/utils/constants/app_constants.dart';
 
 import '../../utils/global/secure_state_wrapper.dart';
@@ -23,9 +23,13 @@ class CardListScreen extends StatefulWidget {
 class _CardListScreenState
     extends SecureStateWrapper<CardListScreen> {
   double topContainer = 0;
+  late CardListCubit _cubit;
 
   @override
-  void onInit() {}
+  void onInit() {
+    _cubit = context.read<CardListCubit>();
+    _cubit.initialize();
+  }
 
   @override
   Widget onBuild(BuildContext context) {
@@ -34,7 +38,7 @@ class _CardListScreenState
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
           Navigator.pushNamed(context, AddCardScreen.id);
         },
         mini: true,
@@ -44,6 +48,7 @@ class _CardListScreenState
           size: 30.w,
           color: ColorConstants.WHITE,
         ),
+        tooltip: 'Add new card',
       ),
       appBar: AppBar(
         backgroundColor: ColorConstants.WHITE,
@@ -56,56 +61,88 @@ class _CardListScreenState
             color: ColorConstants.BLACK,
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.only(bottom: 40.h),
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
-          decoration: BoxDecoration(
-            color: ColorConstants.WHITE,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20.r),
-              bottomRight: Radius.circular(20.r),
+        actions: [
+          /// refresh button
+          IconButton(
+            onPressed: () {
+              _cubit.getCardList();
+            },
+            tooltip: 'Refresh to get latest cards',
+            icon: const Icon(
+              Icons.refresh,
+              color: ColorConstants.BLACK,
             ),
           ),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: LocalDb.cardList.length,
-                  scrollDirection: Axis.vertical,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    if (index ==
-                        LocalDb.cardList.length - 1) {
-                      return SizedBox(
-                        height: 30.h,
-                      );
-                    }
-                    return Dismissible(
-                      key: UniqueKey(),
-                      onDismissed: (direction) {
-                        log('direction: $direction');
-                      },
-                      direction:
-                          DismissDirection.horizontal,
-                      child: Align(
-                        heightFactor: 0.9,
-                        alignment: Alignment.topCenter,
-                        child:
-                            CreditCardWidget(index: index),
-                      ),
-                    );
-                  },
+        ],
+      ),
+      body: BlocConsumer<CardListCubit, CardListState>(
+        bloc: _cubit,
+        listener: (context, state) {},
+        builder: (context, state) {
+          return SafeArea(
+            child: Container(
+              margin: EdgeInsets.only(bottom: 40.h),
+              padding:
+                  EdgeInsets.symmetric(horizontal: 8.w),
+              decoration: BoxDecoration(
+                color: ColorConstants.WHITE,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20.r),
+                  bottomRight: Radius.circular(20.r),
                 ),
               ),
-              SizedBox(
-                height: 5.h,
-              ),
-            ],
-          ),
-        ),
+              child: state.cardList.isEmpty
+                  ? const EmptyView()
+                  : Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount:
+                                state.cardList.length,
+                            scrollDirection: Axis.vertical,
+                            physics:
+                                const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              if (index ==
+                                  state.cardList.length) {
+                                return SizedBox(
+                                  height: 30.h,
+                                );
+                              }
+                              return Dismissible(
+                                key: UniqueKey(),
+                                onDismissed: (direction) {
+                                  _cubit.clearCard(
+                                    id: state
+                                        .cardList[index]
+                                        .id!,
+                                  );
+                                },
+                                direction: DismissDirection
+                                    .horizontal,
+                                child: Align(
+                                  heightFactor: 0.9,
+                                  alignment:
+                                      Alignment.topCenter,
+                                  child: CreditCardWidget(
+                                    index: index,
+                                    card: state
+                                        .cardList[index],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                      ],
+                    ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -120,7 +157,9 @@ class _CardListScreenState
   void onPause() {}
 
   @override
-  void onResume() {}
+  void onResume() {
+    _cubit.getCardList();
+  }
 
   @override
   void onStop() {}

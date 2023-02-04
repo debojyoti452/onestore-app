@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wallet_ui/src/data/models/cards/card_data_model.dart';
 import 'package:wallet_ui/src/utils/helper/helper.dart';
 import 'package:wallet_ui/src/utils/themes/color_constants.dart';
 
@@ -7,9 +8,11 @@ class CreditCardWidget extends StatelessWidget {
   const CreditCardWidget({
     Key? key,
     required this.index,
+    required this.card,
   }) : super(key: key);
 
   final int index;
+  final CardDataModel card;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class CreditCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'ICICI Bank',
+            '${card.bankName}',
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.bold,
@@ -50,11 +53,12 @@ class CreditCardWidget extends StatelessWidget {
             onTap: () {
               Helper.copyToClipboard(
                 context: context,
-                text: '4520 **** **** 1234',
+                text: '${card.cardNumber}',
               );
             },
             child: Text(
-              '4520 **** **** 1234',
+              Helper.cardNumberToAsterisk(
+                  (card.cardNumber ?? '').trim()),
               style: TextStyle(
                 fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
@@ -64,7 +68,8 @@ class CreditCardWidget extends StatelessWidget {
           ),
           SizedBox(height: 40.h),
           Text(
-            'Debojyoti Singha',
+            Helper.cardHolderNameToAsterisk(
+                card.cardName ?? ''),
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.bold,
@@ -76,11 +81,11 @@ class CreditCardWidget extends StatelessWidget {
             onTap: () {
               Helper.copyToClipboard(
                 context: context,
-                text: 'Valid Thru: 12/22',
+                text: card.cardExpiry ?? '',
               );
             },
             child: Text(
-              'Valid Thru: 12/22',
+              'Valid Thru: ${Helper.monthYearToAsterisk(card.cardExpiry ?? '')}',
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,

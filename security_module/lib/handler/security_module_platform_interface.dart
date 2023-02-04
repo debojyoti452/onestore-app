@@ -36,4 +36,10 @@ abstract class SecurityModulePlatform
     throw UnimplementedError(
         'authenticate() has not been implemented.');
   }
+
+  /// Secure App with WindowManager Flags
+  Future<dynamic> secureApp({required int flags}) {
+    throw UnimplementedError(
+        'secureApp() has not been implemented.');
+  }
 }

@@ -245,11 +245,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "275bdc0"
-      resolved-ref: "275bdc01c1f3cccbfb768e0f237ebdf350ce49a6"
+      ref: ff4dd42
+      resolved-ref: ff4dd42f3cc5c4e45aa202a1e98c3f1f58b71b3d
       url: "https://github.com/debojyoti452/encrypt_local_storage.git"
     source: git
-    version: "0.0.4"
+    version: "0.0.6"
   equatable:
     dependency: "direct main"
     description:

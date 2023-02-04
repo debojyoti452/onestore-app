@@ -25,4 +25,14 @@ class MethodChannelSecurityModule
     return await methodChannel.invokeMethod<dynamic>(
         SecurityConstants.AUTHENTICATE);
   }
+
+  @override
+  Future<dynamic> secureApp({required int flags}) {
+    return methodChannel.invokeMethod(
+      SecurityConstants.SECURE_APP,
+      {
+        SecurityConstants.SECURE_APP: flags,
+      },
+    );
+  }
 }

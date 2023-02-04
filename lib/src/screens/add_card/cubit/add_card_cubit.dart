@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bot_toast/bot_toast.dart';
@@ -6,6 +7,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallet_ui/src/data/models/cards/card_data_model.dart';
 import 'package:wallet_ui/src/utils/global/app_cubit_status.dart';
+import 'package:wallet_ui/src/utils/validator/card_validator.dart';
 
 part 'add_card_state.dart';
 
@@ -38,10 +40,26 @@ class AddCardCubit extends Cubit<AddCardState> {
       BotToast.showLoading();
       emit(state.copyWith(
           appCubitStatus: AppCubitLoading()));
-      log('addCard: ${state.cardDataModel.toJson()}');
-      _encryptDb.writeData(key: '', value: '');
+      var updatedCardDataModel =
+          state.cardDataModel.copyWith(
+        id: DateTime.now().millisecondsSinceEpoch,
+        status: true,
+        cardType: CardEnum.DEBIT_CARD.name,
+      );
       emit(state.copyWith(
-          appCubitStatus: AppCubitSuccess()));
+          cardDataModel: updatedCardDataModel));
+
+      _encryptDb.write(
+        key: '${state.cardDataModel.id ?? 0}',
+        value: jsonEncode(
+            state.cardDataModel.toEncryptedJson()),
+      );
+
+      log('addCard: ${state.cardDataModel.toEncryptedJson()}');
+
+      emit(state.copyWith(
+          appCubitStatus:
+              AppCubitSuccess(message: 'card_added')));
     } catch (e) {
       emit(state.copyWith(
           appCubitStatus: AppCubitError(message: '$e')));

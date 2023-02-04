@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wallet_ui/src/screens/add_card/cubit/add_card_cubit.dart';
+import 'package:wallet_ui/src/screens/card_screen/cubit/card_list_cubit.dart';
 import 'package:wallet_ui/src/utils/global/secure_state_wrapper.dart';
 import 'package:wallet_ui/src/utils/themes/color_constants.dart';
 
+import '../../utils/global/app_cubit_status.dart';
 import '../../utils/validator/card_number_formatter.dart';
 import '../../utils/validator/card_validator.dart';
 import '../../utils/validator/card_year_month_formatter.dart';
@@ -61,7 +63,27 @@ class _AddCardScreenState
       backgroundColor: ColorConstants.WHITE,
       body: BlocConsumer<AddCardCubit, AddCardState>(
         bloc: _addCardCubit,
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.appCubitStatus is AppCubitSuccess &&
+              (state.appCubitStatus as AppCubitSuccess)
+                      .message ==
+                  'card_added') {
+            Navigator.pop(context, () {
+              context.read<CardListCubit>().getCardList();
+            });
+          }
+
+          if (state.appCubitStatus is AppCubitError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  (state.appCubitStatus as AppCubitError)
+                      .message,
+                ),
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           return SafeArea(
             child: Container(

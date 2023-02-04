@@ -4,7 +4,11 @@ class AppCubitInitial extends AppCubitStatus {}
 
 class AppCubitLoading extends AppCubitStatus {}
 
-class AppCubitSuccess extends AppCubitStatus {}
+class AppCubitSuccess extends AppCubitStatus {
+  final String message;
+
+  AppCubitSuccess({this.message = ''});
+}
 
 class AppCubitError extends AppCubitStatus {
   final String message;
