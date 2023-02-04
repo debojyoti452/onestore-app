@@ -5,9 +5,9 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:encrypt_db/encrypt_db.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallet_ui/src/data/models/cards/card_data_model.dart';
-import 'package:wallet_ui/src/utils/global/app_cubit_status.dart';
-import 'package:wallet_ui/src/utils/validator/card_validator.dart';
+import 'package:onestore_wallet_app/src/data/models/cards/card_data_model.dart';
+import 'package:onestore_wallet_app/src/utils/global/app_cubit_status.dart';
+import 'package:onestore_wallet_app/src/utils/validator/card_validator.dart';
 
 part 'add_card_state.dart';
 

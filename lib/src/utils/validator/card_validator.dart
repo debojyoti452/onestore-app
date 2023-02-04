@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:wallet_ui/src/utils/themes/color_constants.dart';
+import 'package:onestore_wallet_app/src/utils/themes/color_constants.dart';
 
 enum CardEnum {
   DEBIT_CARD,

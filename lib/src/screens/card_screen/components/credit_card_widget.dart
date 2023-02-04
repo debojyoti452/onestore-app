@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wallet_ui/src/data/models/cards/card_data_model.dart';
-import 'package:wallet_ui/src/utils/helper/helper.dart';
-import 'package:wallet_ui/src/utils/themes/color_constants.dart';
+import 'package:onestore_wallet_app/src/data/models/cards/card_data_model.dart';
+import 'package:onestore_wallet_app/src/utils/helper/helper.dart';
+import 'package:onestore_wallet_app/src/utils/themes/color_constants.dart';
 
 class CreditCardWidget extends StatelessWidget {
   const CreditCardWidget({

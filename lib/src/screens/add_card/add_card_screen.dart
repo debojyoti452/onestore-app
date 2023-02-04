@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wallet_ui/src/screens/add_card/cubit/add_card_cubit.dart';
-import 'package:wallet_ui/src/screens/card_screen/cubit/card_list_cubit.dart';
-import 'package:wallet_ui/src/utils/global/secure_state_wrapper.dart';
-import 'package:wallet_ui/src/utils/themes/color_constants.dart';
+import 'package:onestore_wallet_app/src/screens/add_card/cubit/add_card_cubit.dart';
+import 'package:onestore_wallet_app/src/screens/card_screen/cubit/card_list_cubit.dart';
+import 'package:onestore_wallet_app/src/utils/global/secure_state_wrapper.dart';
+import 'package:onestore_wallet_app/src/utils/themes/color_constants.dart';
 
 import '../../utils/global/app_cubit_status.dart';
 import '../../utils/validator/card_number_formatter.dart';

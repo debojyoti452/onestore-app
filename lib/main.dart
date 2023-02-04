@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:onestore_wallet_app/src/screens/card_screen/cubit/card_list_cubit.dart';
+import 'package:onestore_wallet_app/src/utils/constants/app_constants.dart';
+import 'package:onestore_wallet_app/src/utils/routes/app_routes.dart';
 import 'package:security_module/security_module.dart';
-import 'package:wallet_ui/src/screens/card_screen/cubit/card_list_cubit.dart';
-import 'package:wallet_ui/src/utils/constants/app_constants.dart';
-import 'package:wallet_ui/src/utils/routes/app_routes.dart';
 
 import 'src/screens/add_card/cubit/add_card_cubit.dart';
 import 'src/screens/card_screen/card_list_screen.dart';

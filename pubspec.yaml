@@ -1,4 +1,4 @@
-name: wallet_ui
+name: onestore_wallet_app
 description: A Swing Technologies.
 
 # The following line prevents the package from being accidentally published to
@@ -28,8 +28,10 @@ dependencies:
       url: https://github.com/debojyoti452/encrypt_local_storage.git
       ref: ff4dd42
 
+  ### DO-NOT MODIFY THIS LINE ###
   security_module:
-    path: ./security_module
+    git:
+      url: https://github.com/debojyoti452/security_module.git
 dev_dependencies:
   build_runner: ^2.3.3
   analyzer: ^5.4.0

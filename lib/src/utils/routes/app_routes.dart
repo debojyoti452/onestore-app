@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_ui/src/screens/add_card/add_card_screen.dart';
-import 'package:wallet_ui/src/screens/card_screen/card_list_screen.dart';
+import 'package:onestore_wallet_app/src/screens/add_card/add_card_screen.dart';
+import 'package:onestore_wallet_app/src/screens/card_screen/card_list_screen.dart';
 
 class AppRoutes {
   static Route<T> onGenerateRoute<T>(
