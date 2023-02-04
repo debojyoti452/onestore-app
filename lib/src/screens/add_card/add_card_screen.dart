@@ -167,6 +167,7 @@ class _AddCardScreenState
         ),
       ),
       keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.next,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(4),
@@ -186,7 +187,7 @@ class _AddCardScreenState
         CardNumberFormatter(),
         LengthLimitingTextInputFormatter(19),
       ],
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.next,
       keyboardType: TextInputType.number,
       validator:
           CardValidator.validateCardNumWithLuhnAlgorithm,
@@ -225,6 +226,8 @@ class _AddCardScreenState
   }) {
     return TextFormField(
       onChanged: onChanged,
+      textCapitalization: TextCapitalization.words,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         labelText: 'Card Holder Name',
         labelStyle: const TextStyle(
@@ -268,6 +271,8 @@ class _AddCardScreenState
           ),
         ),
       ),
+      textCapitalization: TextCapitalization.words,
+      textInputAction: TextInputAction.done,
     );
   }
 

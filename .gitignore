@@ -50,3 +50,5 @@ lib/generated_plugin_registrant.dart
 
 # exclude security_module
 security_module/
+prod.sh
+adb_run.sh
