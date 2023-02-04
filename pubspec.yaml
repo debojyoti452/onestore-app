@@ -1,5 +1,7 @@
 name: onestore_wallet_app
-description: A Swing Technologies.
+description: A Swing Technologies Product.
+homepage: https://swingtechnologies.in/
+repository: https://github.com/debojyoti452/onestore-app
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
