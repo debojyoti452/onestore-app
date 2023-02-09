@@ -52,3 +52,15 @@ lib/generated_plugin_registrant.dart
 security_module/
 prod.sh
 adb_run.sh
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+android/fastlane/report.xml
+android/fastlane/Preview.html
+android/fastlane/screenshots
+android/fastlane/test_output
+android/fastlane_cloud_key.json
+android/fastlane/metadata/
