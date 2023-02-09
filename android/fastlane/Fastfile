@@ -18,7 +18,7 @@ default_platform(:android)
 platform :android do
   desc "Deploy a new version to the Google Play"
   lane :production do
-    sh "flutter clean && flutter pub get &&  flutter pub run build_runner build --delete-conflicting-outputs && flutter build appbundle --release -t lib/flavors/env/prod.dart --flavor=prod"
+    sh "flutter clean && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs && flutter build appbundle -t lib/flavors/env/prod.dart --flavor=prod"
     upload_to_play_store(
         track: 'production',
         aab: '../build/app/outputs/bundle/release/app-release.aab',
