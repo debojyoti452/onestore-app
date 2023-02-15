@@ -31,9 +31,7 @@ dependencies:
       ref: ff4dd42
 
   ### DO-NOT MODIFY THIS LINE ###
-  security_module:
-    git:
-      url: https://github.com/debojyoti452/security_module.git
+  security_module: ^0.0.1
 dev_dependencies:
   build_runner: ^2.3.3
   analyzer: ^5.4.0
