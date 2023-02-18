@@ -15,9 +15,6 @@ on:
 # Declare default permissions as read only.
 permissions: read-all
 
-env: 
-	defaults: ok
-
 jobs:
   fastlane-deploy:
     runs-on: ubuntu-latest
