@@ -2,6 +2,7 @@ name: onestore_wallet_app
 description: A Swing Technologies Product.
 homepage: https://swingtechnologies.in/
 repository: https://github.com/debojyoti452/onestore-app
+issue_tracker: https://github.com/debojyoti452/move_app/issues
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -26,10 +27,7 @@ dependencies:
   json_annotation: ^4.8.0
   url_launcher: ^6.1.9
 
-  encrypt_db:
-    git:
-      url: https://github.com/debojyoti452/encrypt_local_storage.git
-      branch: main
+  encrypt_db: ^0.0.8
 
   ### DO-NOT MODIFY THIS LINE ###
   security_module: ^0.0.1
