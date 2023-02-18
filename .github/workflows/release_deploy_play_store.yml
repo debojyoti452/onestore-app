@@ -15,6 +15,9 @@ on:
 # Declare default permissions as read only.
 permissions: read-all
 
+env: 
+	defaults: ok
+
 jobs:
   fastlane-deploy:
     runs-on: ubuntu-latest
@@ -41,16 +44,18 @@ jobs:
 
       - name: Configure Keystore
         run: |
-          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/key.jks
-          echo "storeFile=key.jks" >> key.properties
-          echo "keyAlias=$KEYSTORE_KEY_ALIAS" >> key.properties
-          echo "storePassword=$KEYSTORE_STORE_PASSWORD" >> key.properties
-          echo "keyPassword=$KEYSTORE_KEY_PASSWORD" >> key.properties
+          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/"$KEYSTORE_FILE_NAME"
+          echo "storeFile=key.jks" >> "$KEYSTORE_PROP_NAME"
+          echo "keyAlias=$KEYSTORE_KEY_ALIAS" >> "$KEYSTORE_PROP_NAME"
+          echo "storePassword=$KEYSTORE_STORE_PASSWORD" >> "$KEYSTORE_PROP_NAME"
+          echo "keyPassword=$KEYSTORE_KEY_PASSWORD" >> "$KEYSTORE_PROP_NAME"
         env:
           PLAY_STORE_UPLOAD_KEY: ${{ secrets.KEYSTORE_FILE }}
           KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_FILE_NAME: ${{ secrets.KEYSTORE_FILE_NAME }}
+          KEYSTORE_PROP_NAME: ${{ secrets.KEYSTORE_PROP_NAME }}
         working-directory: android
 
       # Build and deploy with Fastlane (by default, to beta track) 🚀.
