@@ -8,7 +8,7 @@ issue_tracker: https://github.com/debojyoti452/move_app/issues
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.1.0+3
+version: 1.2.0+4
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
