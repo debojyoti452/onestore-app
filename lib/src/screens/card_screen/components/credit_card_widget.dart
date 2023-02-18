@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onestore_wallet_app/src/data/models/cards/card_data_model.dart';
-import 'package:onestore_wallet_app/src/utils/helper/helper.dart';
+import 'package:onestore_wallet_app/src/utils/helper/card_helper.dart';
 import 'package:onestore_wallet_app/src/utils/themes/color_constants.dart';
+
+import '../../../utils/helper/helper.dart';
 
 class CreditCardWidget extends StatelessWidget {
   const CreditCardWidget({
@@ -57,7 +59,7 @@ class CreditCardWidget extends StatelessWidget {
               );
             },
             child: Text(
-              Helper.cardNumberToAsterisk(
+              CardHelper.cardNumberToAsterisk(
                   (card.cardNumber ?? '').trim()),
               style: TextStyle(
                 fontSize: 24.sp,
@@ -68,7 +70,7 @@ class CreditCardWidget extends StatelessWidget {
           ),
           SizedBox(height: 40.h),
           Text(
-            Helper.cardHolderNameToAsterisk(
+            CardHelper.cardHolderNameToAsterisk(
                 card.cardName ?? ''),
             style: TextStyle(
               fontSize: 14.sp,
@@ -85,7 +87,7 @@ class CreditCardWidget extends StatelessWidget {
               );
             },
             child: Text(
-              'Valid Thru: ${Helper.monthYearToAsterisk(card.cardExpiry ?? '')}',
+              'Valid Thru: ${CardHelper.monthYearToAsterisk(card.cardExpiry ?? '')}',
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,

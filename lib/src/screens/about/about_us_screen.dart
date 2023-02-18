@@ -2,8 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:onestore_wallet_app/src/data/constants/app_constants.dart';
 import 'package:onestore_wallet_app/src/data/constants/assets_constants.dart';
 import 'package:onestore_wallet_app/src/screens/about/cubit/about_us_cubit.dart';
+import 'package:onestore_wallet_app/src/utils/helper/helper.dart';
 
 import '../../utils/themes/color_constants.dart';
 
@@ -111,7 +113,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                           color: Colors.blueAccent,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () {},
+                          ..onTap = () {
+                            Helper.openUrl(
+                                AppConstants.termsOfUseUrl);
+                          },
                       ),
                       TextSpan(
                         text: ' | ',
@@ -129,7 +134,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                           color: Colors.blueAccent,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () {},
+                          ..onTap = () {
+                            Helper.openUrl(AppConstants
+                                .privacyPolicyUrl);
+                          },
                       ),
                     ],
                   ),
@@ -154,7 +162,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                           color: Colors.blueAccent,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () {},
+                          ..onTap = () {
+                            Helper.openUrl(AppConstants
+                                .swingTechnologiesUrl);
+                          },
                       ),
                       TextSpan(
                         text: 'All rights reserved.',
