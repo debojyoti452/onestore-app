@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:onestore_wallet_app/src/screens/card_screen/cubit/card_list_cubit.dart';
-import 'package:onestore_wallet_app/src/utils/constants/app_constants.dart';
-import 'package:onestore_wallet_app/src/utils/routes/app_routes.dart';
 import 'package:security_module/security_module.dart';
 
+import 'src/data/constants/app_constants.dart';
+import 'src/screens/about/cubit/about_us_cubit.dart';
 import 'src/screens/add_card/cubit/add_card_cubit.dart';
 import 'src/screens/card_screen/card_list_screen.dart';
+import 'src/screens/card_screen/cubit/card_list_cubit.dart';
+import 'src/utils/routes/app_routes.dart';
 
 Future<void> mainCommon() async {
   SecurityModule.secureApp(flags: Encrypter.SECURE_APP);
@@ -17,6 +18,7 @@ Future<void> mainCommon() async {
     providers: [
       BlocProvider(create: (context) => AddCardCubit()),
       BlocProvider(create: (context) => CardListCubit()),
+      BlocProvider(create: (context) => AboutUsCubit()),
     ],
     child: BaseApp(),
   ));
