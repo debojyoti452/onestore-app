@@ -56,6 +56,7 @@ protect your card information.
 - Card Templates
 - Card Themes
 - Card Sharing
+- Multiple Language Support
 
 ## Issues
 

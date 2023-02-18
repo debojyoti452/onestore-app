@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:onestore_wallet_app/src/screens/add_card/add_card_screen.dart';
 import 'package:onestore_wallet_app/src/screens/card_screen/card_list_screen.dart';
 
+import '../../screens/about/about_us_screen.dart';
+
 class AppRoutes {
   static Route<T> onGenerateRoute<T>(
       RouteSettings settings) {
@@ -17,6 +19,13 @@ class AppRoutes {
           builder: (_) => const AddCardScreen(),
           settings: settings,
         );
+
+      case AboutUsScreen.id:
+        return _SlideAnimator(
+          builder: (_) => const AboutUsScreen(),
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

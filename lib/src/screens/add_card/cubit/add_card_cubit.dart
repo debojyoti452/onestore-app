@@ -13,8 +13,9 @@ part 'add_card_state.dart';
 
 class AddCardCubit extends Cubit<AddCardState> {
   AddCardCubit()
-      : super(AddCardState(
-            appCubitStatus: AppCubitInitial()));
+      : super(
+          AddCardState(appCubitStatus: AppCubitInitial()),
+        );
 
   final EncryptDb _encryptDb = EncryptDb();
 

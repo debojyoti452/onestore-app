@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:onestore_wallet_app/src/screens/card_screen/components/empty_view.dart';
-import 'package:onestore_wallet_app/src/screens/card_screen/cubit/card_list_cubit.dart';
-import 'package:onestore_wallet_app/src/utils/constants/app_constants.dart';
 
+import '../../data/constants/app_constants.dart';
 import '../../utils/global/secure_state_wrapper.dart';
 import '../../utils/themes/color_constants.dart';
+import '../about/about_us_screen.dart';
 import '../add_card/add_card_screen.dart';
 import 'components/credit_card_widget.dart';
+import 'components/empty_view.dart';
+import 'cubit/card_list_cubit.dart';
 
 class CardListScreen extends StatefulWidget {
   static const id = 'CARD_LIST_SCREEN';
@@ -72,6 +73,26 @@ class _CardListScreenState
               Icons.refresh,
               color: ColorConstants.BLACK,
             ),
+          ),
+          // dropdown menu
+
+          PopupMenuButton(
+            icon: const Icon(
+              Icons.more_vert,
+              color: ColorConstants.BLACK,
+            ),
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                child: Text('About'),
+                value: 1,
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 1) {
+                Navigator.pushNamed(
+                    context, AboutUsScreen.id);
+              }
+            },
           ),
         ],
       ),
