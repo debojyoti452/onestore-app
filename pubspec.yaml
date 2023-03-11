@@ -1,12 +1,8 @@
 name: onestore_wallet_app
-description: A Swing Technologies Product.
+description: A Card Store for the OneStore App.
 homepage: https://swingtechnologies.in/
 repository: https://github.com/debojyoti452/onestore-app
-issue_tracker: https://github.com/debojyoti452/move_app/issues
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+issue_tracker: https://github.com/debojyoti452/onestore-app/issues
 
 version: 1.2.0+4
 
@@ -26,11 +22,11 @@ dependencies:
   google_fonts: ^4.0.3
   json_annotation: ^4.8.0
   url_launcher: ^6.1.9
-
   encrypt_db: ^0.0.8
 
   ### DO-NOT MODIFY THIS LINE ###
   security_module: ^0.0.1
+  
 dev_dependencies:
   build_runner: ^2.3.3
   analyzer: ^5.4.0
@@ -39,11 +35,7 @@ dev_dependencies:
   freezed: ^2.3.2
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.1
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
