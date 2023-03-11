@@ -2,6 +2,16 @@
 
 ### A Card Store for the OneStore App
 
+## Available at 
+<p align="left">
+<a href="https://play.google.com/store/apps/details?id=com.swing.onestore">
+    <img alt="Get it on Google Play"
+        height="80"
+        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+</a>
+</p>
+
+
 ## Description
 
 This is a card store for the OneStore App. It is a simple app that allows you to create a store for
